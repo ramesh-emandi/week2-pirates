@@ -2,9 +2,29 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(ProfileWidget());
 
+class ProfileWidget extends StatefulWidget {
+  @override
+  _ProfileWidgetState createState() => _ProfileWidgetState();
+}
 
-class ProfileWidget extends StatelessWidget {
+class _ProfileWidgetState extends State<ProfileWidget> {
 
+//  var light_color = Colors.white;
+//  var dark_color = Colors.black;
+  static bool isDark = false;
+  var theme_text_color = Colors.black;//isDark?Colors.white:Colors.black;//= light_color;
+  var theme_view_color = Colors.white;//isDark?Colors.black:Colors.white;//= light_color;
+
+  invertTheme() {
+    isDark = !isDark;
+    theme_text_color = isDark?Colors.white:Colors.black;
+    theme_view_color = isDark?Colors.black:Colors.white;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +32,10 @@ class ProfileWidget extends StatelessWidget {
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: theme_view_color,
         appBar: AppBar(
-          iconTheme: IconThemeData(color:Colors.grey),
-          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.grey),
+          backgroundColor: theme_view_color,
           elevation: 0.0,
           leading: Icon(Icons.arrow_back, color: Colors.grey),
           actions: <Widget>[
@@ -22,47 +43,39 @@ class ProfileWidget extends StatelessWidget {
               Icons.favorite,
               color: Colors.grey,
             ),
-            PopupMenuButton(
-              itemBuilder: (BuildContext context) {
-                return;
-              },
-            ),
+            Icon(
+              Icons.more_vert,
+              color: Colors.grey,
+            )
             // Options button
           ],
-
         ),
         body: Container(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 15.0),
                 child: Stack(
-
                   children: <Widget>[
                     Container(
-
                       child: CircleAvatar(
-
                         backgroundImage: AssetImage(
                           ("assets/images/elon_musk_royal_society.jpg"),
                         ),
                         radius: 60.0,
                       ),
                     ),
-
                     Positioned(
                       bottom: 5,
                       right: 5,
                       child: Container(
                         child: CircleAvatar(
-                          radius: 12,
+                            radius: 12,
                             backgroundImage: AssetImage(
                               ("assets/images/twitter_verified.jpg"),
-                            )
-                        ),
+                            )),
                       ),
                     )
                   ],
@@ -71,6 +84,7 @@ class ProfileWidget extends StatelessWidget {
               Text(
                 "Elon Musk",
                 style: TextStyle(
+                  color: theme_text_color,
                   fontWeight: FontWeight.w700,
                   fontSize: 32.0,
                 ),
@@ -89,10 +103,10 @@ class ProfileWidget extends StatelessWidget {
                 child: Text(
                   "Create great interfaces",
                   style: TextStyle(
+                      color: theme_text_color,
                       fontWeight: FontWeight.w400,
                       fontSize: 20.0,
                       fontStyle: FontStyle.normal
-//                  color: Color.fromRGBO(139, 139, 139, 1.0),
                       ),
                 ),
               ),
@@ -102,25 +116,31 @@ class ProfileWidget extends StatelessWidget {
                   fontSize: 20.0,
                   fontStyle: FontStyle.normal,
                   decoration: TextDecoration.underline,
-//                  color: Color.fromRGBO(139, 139, 139, 1.0),
+                  color: theme_view_color,
                 ),
               ),
               Container(
                 width: 250.0,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0,20.0,0.0,20.0),
+                  padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Image.asset("assets/images/twitter2.png",
-                      width: 20,
-                      height: 20,),
-                      Image.asset("assets/images/medium.png",
+                      Image.asset(
+                        "assets/images/twitter2.png",
                         width: 20,
-                        height: 20,),
-                      Image.asset("assets/images/linkedin2.png",
+                        height: 20,
+                      ),
+                      Image.asset(
+                        "assets/images/medium.png",
                         width: 20,
-                        height: 20,),
+                        height: 20,
+                      ),
+                      Image.asset(
+                        "assets/images/linkedin2.png",
+                        width: 20,
+                        height: 20,
+                      ),
                     ],
                   ),
                 ),
@@ -131,7 +151,11 @@ class ProfileWidget extends StatelessWidget {
                   style:
                       TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    invertTheme();
+                  });
+                },
                 color: Colors.blue,
                 textColor: Colors.white,
                 height: 45.0,
@@ -140,7 +164,7 @@ class ProfileWidget extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(8.0))),
               ),
               Divider(
-                color: Colors.black,
+                color: theme_text_color,
                 indent: 50,
                 endIndent: 50,
                 height: 50,
@@ -165,6 +189,7 @@ class ProfileWidget extends StatelessWidget {
                           child: Text(
                             "1.3k",
                             style: TextStyle(
+                              color: theme_text_color,
                                 fontSize: 22,
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w700),
@@ -194,6 +219,7 @@ class ProfileWidget extends StatelessWidget {
                           child: Text(
                             "1.3k",
                             style: TextStyle(
+                                color: theme_text_color,
                                 fontSize: 22,
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w700),

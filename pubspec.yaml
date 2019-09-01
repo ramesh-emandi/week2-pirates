@@ -49,6 +49,7 @@ flutter:
     - assets/images/twitter2.png
     - assets/images/linkedin2.png
     - assets/images/medium.png
+    - assets/images/twitter_verified.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -63,16 +64,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: PlayFair
-      fonts:
-      - asset: fonts/PlayfairDisplay.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+#    - family: PlayFair
+#      fonts:
   #         style: italic
     - family: Oswald
       fonts:
-        - asset: fonts/Oswald-Light.ttf
-        - asset: fonts/Oswald-Medium.ttf
-        - asset: fonts/Oswald-Bold.ttf
+        - asset: assets/fonts/Oswald-Light.ttf
+        - asset: assets/fonts/Oswald-Medium.ttf
+        - asset: assets/fonts/Oswald-Bold.ttf
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,

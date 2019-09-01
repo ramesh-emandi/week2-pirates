@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(ProfileWidget());
 
+
 class ProfileWidget extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
@@ -30,20 +33,37 @@ class ProfileWidget extends StatelessWidget {
         ),
         body: Container(
           width: double.infinity,
-//          color: Colors.white,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
+
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
+                padding: const EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 15.0),
                 child: Stack(
+
                   children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: AssetImage(
-                        ("assets/images/elon_musk_royal_society.jpg"),
+                    Container(
+
+                      child: CircleAvatar(
+
+                        backgroundImage: AssetImage(
+                          ("assets/images/elon_musk_royal_society.jpg"),
+                        ),
+                        radius: 60.0,
                       ),
-                      radius: 60.0,
+                    ),
+
+                    Positioned(
+                      bottom: 5,
+                      right: 5,
+                      child: Container(
+                        child: CircleAvatar(
+                          radius: 12,
+                            backgroundImage: AssetImage(
+                              ("assets/images/twitter_verified.jpg"),
+                            )
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -92,13 +112,13 @@ class ProfileWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Image.asset("assets/images/behance-logo.png",
+                      Image.asset("assets/images/twitter2.png",
                       width: 20,
                       height: 20,),
-                      Image.asset("assets/images/behance-logo.png",
+                      Image.asset("assets/images/medium.png",
                         width: 20,
                         height: 20,),
-                      Image.asset("assets/images/behance-logo.png",
+                      Image.asset("assets/images/linkedin2.png",
                         width: 20,
                         height: 20,),
                     ],
